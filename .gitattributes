@@ -1,0 +1,14 @@
+# GitHub Linguist language overrides
+*.ex linguist-language=Euphoria
+*.e linguist-language=Euphoria
+*.ew linguist-language=Euphoria
+*.eu linguist-language=Euphoria
+
+# Text and binary declarations
+*.md text
+*.txt text
+*.c text
+*.h text
+*.py text
+*.sh text eol=lf
+Makefile text

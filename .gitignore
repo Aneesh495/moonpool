@@ -1,0 +1,22 @@
+# Build artifacts
+*.o
+*.a
+*.so
+*.dylib
+bin/fastpath_lib.so
+bin/fastpath_lib.dylib
+build/
+
+# Temporary and editor files
+*.swp
+*.swo
+*~
+.DS_Store
+__pycache__/
+*.pyc
+
+# Test and run outputs
+*.log
+test_output/
+coverage/
+.euphoria/
