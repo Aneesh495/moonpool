@@ -26,7 +26,6 @@ def run_euphoria_test(test_rel_path):
 
 def run_fastpath_suite():
     print(">> Running C17 fastpath test suite...")
-    # Build test binary if missing
     if not os.path.isfile(FASTPATH_BIN):
         os.makedirs(os.path.join(REPO_DIR, "build"), exist_ok=True)
         build_cmd = [
@@ -162,7 +161,9 @@ def main():
         "tests/t_bathymetry.ex",
         "tests/t_inspection.ex",
         "tests/t_control.ex",
-        "tests/t_telemetry.ex"
+        "tests/t_telemetry.ex",
+        "tests/t_pipeline.ex",
+        "tests/t_ocean.ex"
     ]
 
     if args.unit or args.all:

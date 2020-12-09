@@ -15,14 +15,11 @@ LOCAL_INC = os.path.join(REPO_DIR, ".euphoria", "include")
 SRC_INC = os.path.join(REPO_DIR, "src")
 
 def get_eui_path():
-    # 1. Check local bootstrap directory
     if os.path.isfile(LOCAL_EUI) and os.access(LOCAL_EUI, os.X_OK):
         return LOCAL_EUI
-    # 2. Check system PATH
     system_eui = subprocess.run(["which", "eui"], capture_output=True, text=True).stdout.strip()
     if system_eui and os.path.isfile(system_eui):
         return system_eui
-    # 3. Try to run bootstrap
     bootstrap_sh = os.path.join(REPO_DIR, "tools", "bootstrap.sh")
     if os.path.isfile(bootstrap_sh):
         print("[eu_runner] eui not found, running bootstrap.sh...")
@@ -36,7 +33,7 @@ def run_script(script_path, args=None):
     if args is None:
         args = []
     
-    cmd = [eui_bin]
+    cmd = [eui_bin, "-batch"]
     if os.path.isdir(LOCAL_INC):
         cmd.extend(["-I", LOCAL_INC])
     cmd.extend(["-I", SRC_INC])
@@ -48,7 +45,7 @@ def run_script(script_path, args=None):
     if os.path.isdir(LOCAL_INC):
         env["EUDIR"] = os.path.join(REPO_DIR, ".euphoria")
     
-    return subprocess.run(cmd, env=env)
+    return subprocess.run(cmd, env=env, cwd=REPO_DIR)
 
 def main():
     if len(sys.argv) < 2:

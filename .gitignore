@@ -20,3 +20,4 @@ __pycache__/
 test_output/
 coverage/
 .euphoria/
+ex.err
